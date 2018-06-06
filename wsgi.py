@@ -37,7 +37,7 @@ def do_admin_login():
         session['logged_in'] = True
         return hey(request.form['name'])
     else:
-        ctypes.windll.user32.MessageBoxW(0, "Wrong User Id or Password", "Your title", 1)
+        flash("Wrong")
     return hello()
 
 @application.route("/logout")
