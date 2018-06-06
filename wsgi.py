@@ -1,6 +1,5 @@
 from flask import Flask
 from flask import Flask, flash, redirect, render_template, request, session, abort
-import easygui
 
 from random import randint
 
@@ -37,7 +36,7 @@ def do_admin_login():
         session['logged_in'] = True
         return hey(request.form['name'])
     else:
-        easygui.msgbox("This is a message!", title="simple gui")
+        flash('wrong password!')
     return hello()
 
 @application.route("/logout")
