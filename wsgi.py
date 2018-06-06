@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import Flask, flash, redirect, render_template, request, session, abort
-import ctypes
+import easygui
 
 from random import randint
 
@@ -37,7 +37,7 @@ def do_admin_login():
         session['logged_in'] = True
         return hey(request.form['name'])
     else:
-        ctypes.windll.user32.MessageBoxW(0, "Your text", "Your title", 1)
+        easygui.msgbox("This is a message!", title="simple gui")
     return hello()
 
 @application.route("/logout")
