@@ -14,8 +14,6 @@ application.secret_key = os.urandom(12)
 def hello():
     if not session.get('logged_in'):
         return render_template('login.html')
-    else:
-        return hey("vikas")
 
 @application.route("/hey/<string:name>")
 def hey(name):
@@ -36,6 +34,7 @@ def hey(name):
 def do_admin_login():
     if request.form['password'] == 'password' and request.form['username'] == 'admin':
         session['logged_in'] = True
+        return hey(request.form['name'])
     else:
         flash('wrong password!')
     return hello()
