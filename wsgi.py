@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import Flask, flash, redirect, render_template, request, session, abort
+import ctypes
 
 from random import randint
 
@@ -36,7 +37,7 @@ def do_admin_login():
         session['logged_in'] = True
         return hey(request.form['name'])
     else:
-        flash('wrong password!')
+        ctypes.windll.user32.MessageBoxW(0, "Wrong User Id or Password", "Your title", 1)
     return hello()
 
 @application.route("/logout")
